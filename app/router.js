@@ -7,7 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('authentication');
-  this.route('blogs');
+  this.resource('blogs', function(){
+      this.route('view', {path: '/:id'});
+  });
 });
 
 Router.reopen({

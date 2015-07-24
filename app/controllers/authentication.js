@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    loginFailed: false,
+    transition: null,
     errorMessage: '',
     actions: {
         login: function() {
@@ -19,17 +19,14 @@ export default Ember.Controller.extend({
             }
             var that = this;
             Ember.$.post( "http://blogr-api.herokuapp.com/login", {
-                "username": user,
-                "password": pass
+                'username': user,
+                'password': pass
             }).done( function(response) {
-                var applicationCtrl = that.controllerFor('application');
-                applicationCtrl.setProperties({
-                    'isAuthenticated': true,
-                    'username': user,
-                    'user_id': response.user_id,
-                    'session_id': response.session_id
-                });
-                var previousTransition = that.get('previousTransition');
+                localStorage.setItem('user_id', response.user_id);
+                localStorage.setItem('session_id', response.session_id);
+                localStorage.setItem('isAuthenticated', true);
+                localStorage.setItem('username', user);
+                var previousTransition = that.get('transition');
                 if (previousTransition) {
                     that.set('previousTransition', null);
                     previousTransition.retry();

@@ -1,7 +1,4 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-    beforeModel: function(transition) {
-        this.set('previousTransition', transition);
-    }
+export default Ember.Route.extend({    
 });
