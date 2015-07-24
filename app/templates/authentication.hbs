@@ -1,0 +1,13 @@
+<form class="authentication-form" {{action "login" on="submit"}}>
+    <div id="login-title">
+        <h3>login</h3>
+    </div>
+    <label>Username</label>
+    {{input value=username type='text' placeholder='username'}}
+    <label>Password</label>
+    {{input value=password type="password" placeholder='password'}}
+    <button type="submit" class="btn">Log in!</button>
+    {{#if loginFailed}}
+        <div class="form-error">{{errorMessage}}</div>
+    {{/if}}
+</form>

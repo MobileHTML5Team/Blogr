@@ -19,6 +19,16 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self' ws://localhost:35729 ws://localhost:35729 ws://0.0.0.0:35729 http://0.0.0.0:4200/csp-report ws://localhost:35729 ws://0.0.0.0:35729 http://0.0.0.0:4200/csp-report",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+  };
+  
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
