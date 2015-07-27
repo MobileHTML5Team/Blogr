@@ -1,1 +1,19 @@
-view!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<div class="">
+    <div class="item-title">
+        {{model.title}}
+    </div>
+    <ul>
+        <li>
+            <label class="item-label">Id:</label> {{model.id}}
+        </li>
+        <li>
+            <label class="item-label">Message:</label> {{model.message}}
+        </li>
+        <li>
+            <label class="item-label">Creation Date:</label> {{model.creationDate}}
+        </li>
+        <li>
+            <label class="item-label">Owner:</label> {{model.owner.username}}
+        </li>
+    </ul>
+</div>

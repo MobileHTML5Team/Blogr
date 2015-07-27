@@ -1,6 +1,12 @@
-<ul id="todo-list">
-    {{#each blog in model}}
-        {{blog-item blog=blog}}
-    {{/each}}
-</ul>
-{{outlet}}
+<div class="todo-list-container">
+    <ul id="todo-list">
+        {{#each blog in model}}
+        <li>
+            {{#link-to 'blogs.view' blog.id}} {{blog.title}} {{/link-to}}
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="todo-item-container">
+    {{outlet}}
+</div>
