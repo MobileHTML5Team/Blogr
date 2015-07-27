@@ -1,0 +1,24 @@
+<div>
+    <form {{action "validateParams" credential on="submit"}}>
+        <div class="error">
+            {{#if errorMessage}}
+              {{errorMessage}}
+            {{/if}}
+        </div>
+        <div>
+            <label>
+                User Name
+            </label>
+            {{input value=credential.username type="text"}}
+        </div>
+        <div>
+            <label>
+                Password
+            </label>
+            {{input value=credential.password type="password"}}
+        </div>
+        <button type="submit">login</button>
+        <button type="bottunm" {{action 'cancel'}}>cancel</button>
+    </form>
+</div>
+{{outlet}}
