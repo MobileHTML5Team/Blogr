@@ -36,5 +36,9 @@
     "ember-data": "1.13.5",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2"
+  },
+  "dependencies": {
+    "ember-inflector-node-shim": "git://github.com/manuelmitasch/ember-inflector-node-shim.git",
+    "nedb": "^1.1.2"
   }
 }

@@ -1,3 +1,22 @@
-<h2 id="title">Welcome to Blogr</h2>
+<header class="main-header">
+    <h2 id="title">Welcome to Blogr</h2>
+</header>
 
-{{outlet}}
+<section class="main-content">
+    <section class="authentication-content">
+        {{#unless isAuthenticated}}
+            {{#link-to 'authentication'}} log-in {{/link-to}}
+        {{else}}
+            <div class="username">
+                {{username}} <button class="button-logout" {{action 'logout'}}></button>
+            </div>
+        {{/unless}}
+    </section>
+    <section class="content">
+        {{outlet}}
+    </section>
+</section>
+
+<footer class="main-footer">
+    <h3>&copy; MobileHTML5Team all rights reserved</h3>
+</footer>
