@@ -34,7 +34,7 @@ export default Ember.ArrayController.extend({
     * @type {Number}
     * @default "5"
     */
-    pageSize: 5,
+    pageSize: 10,
 
     /**
     * The controller actions.

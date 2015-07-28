@@ -184,16 +184,24 @@ h1, h2, h3, a {
         left: 0;
         margin: auto;
     }
+    #blog-list {
+        margin-top: 0;
+    }
 }
 
 .add-item-container {
-    background-color: lighten(@blue, 15%);
-    height: 20px;
-    width: 50px;
-    padding: 5px 5px 5px 15px;
+    background-color: @blue;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    color: @white;
     .add-item-link{
+        background-color: lighten(@blue, 15%);
         color: @white;
-        text-align: center;
+        float: right;
+        padding: 5px;
+        height: 30px;
+        width: 50px;
     }
 }
 
