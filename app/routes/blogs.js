@@ -28,12 +28,39 @@ export default Ember.Route.extend({
     },
 
     /**
-    * Returns the model for all the blogs.
+    * Model hook that will fetch the blogs, based on the
+    * page object passed through as a query parameter.
     *
     * @method model
     * @return {Array} Returns an array with all the blogs.
     */
-    model: function() {
-        return this.store.findAll('blog');
+    model: function(params) {
+        console.log('params');
+        console.log(params);
+        if(params.page){
+            var page = params.page;
+            // avoid page numbers to be trolled i.e.: page=string, page=-1, page=1.23
+            page = isNaN(page) ? 1 : Math.floor(Math.abs(page));
+            this.set('page', page);
+        }
+        return this.store.findQuery('blog', params);
+    },
+
+    /**
+    * The router actions.
+    *
+    * @property actions
+    * @type {Object}
+    */
+    actions: {
+        /**
+        * Action method that refresh the model.
+        * Usually this method will be called when the pagination changed.
+        *
+        * @method refreshModel
+        */
+        refreshModel: function() {
+            this.refresh();
+        }
     }
 });

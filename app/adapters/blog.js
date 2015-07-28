@@ -44,7 +44,7 @@ export default DS.RESTAdapter.extend({
     * @type {String}
     * @default "blog"
     */
-    buildURL: function(type, id, snapshot) {
+    buildURL: function(modelName, id, snapshot) {        
         if(id) {
             return this.get('host') + this.get('namespace') + '/blog/' + id;
         }

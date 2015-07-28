@@ -1,6 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
+    /**
+    * Property used to display the desired label message for every blog.
+    * The property will be displayed in the format "title - message (owner)"
+    *
+    * @property label    
+    */
     label: function() {
         var blog = this.get('blog');
         var message = blog.get('message');

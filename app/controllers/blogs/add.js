@@ -18,7 +18,10 @@ export default Ember.ObjectController.extend({
                 title: title,
                 message: message
             });
-            blog.save();
+            var that = this;
+            blog.save().then(function(response) {                
+                that.transitionToRoute('blogs.view', response.id);
+            });
         }
     }
 });
