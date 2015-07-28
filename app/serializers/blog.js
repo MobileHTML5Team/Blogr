@@ -89,5 +89,12 @@ export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
     */
     serializeIntoHash: function(hash, type, record, options) {
         Ember.merge(hash, this.serialize(record, options));
+    },
+
+    serialize: function(snapshot) {
+        return {
+            title: snapshot.get('title'),
+            message: snapshot.get('message')
+        };
     }
 });
