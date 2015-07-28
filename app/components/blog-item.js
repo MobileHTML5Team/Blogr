@@ -1,12 +1,13 @@
-/**
-* Copyrigth (c) 2015 by PROS, Inc. All Rights Reserved.
-* This software is the confidential and propietary information of
-* PROS, Inc. ("Confidential Information").
-* You may not disclose such Confidential Information, and may only
-* use such Confidential Information in accordance with the terms of
-* the license agreement you entered into with PROS.
-*/
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    label: function() {
+        var blog = this.get('blog');
+        var message = blog.get('message');
+        message = message.length < 5 ? message : message.substring(0, 5) + '...';
+        var title = blog.get('title');
+        var owner = blog.get('owner') ? blog.get('owner').get('firstName') : 'undefined';
+        var label = title + ' - ' + message + ' (' + owner + ')';
+        return label;
+    }.property('currentPath')
 });

@@ -8,7 +8,7 @@
 */
 import DS from 'ember-data';
 
-export default DS.RESTSerializer.extend({
+export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
 
     /**
     * All the attributes that will be serialized must be listed here.
@@ -59,12 +59,38 @@ export default DS.RESTSerializer.extend({
         * @property owner
         * @type {Object}
         */
-        owner: DS.attr(),
+        owner: {embedded: 'always'}
     },
-    normalizePayload: function(payload) {
+
+    /**
+    *  Method that will normalize the payload, in order to be compatible with
+    * the emberjs format.
+    *
+    * @method normalizePayload
+    * @param payload the payload
+    * @return {Object} Returns the normalized payload.
+    */
+    normalizePayload: function(payload) {        
         payload = payload instanceof Array ? payload : [payload];
         return {
             'blog' : payload
         };
+    },
+
+    /**
+    *  Method that will serialize the payload, in order to be compatible with
+    * the rest api.
+    *
+    * @method serialize
+    * @param record the current record
+    * @param options the options
+    * @return {Object} Returns the serialized payload.
+    */
+    serialize: function(snapshot) {
+        var payload = {
+            title: snapshot.attr('title'),
+            message: snapshot.attr('message')
+        };
+        return payload;
     }
 });

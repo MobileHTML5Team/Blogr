@@ -7,23 +7,6 @@
 * the license agreement you entered into with PROS.
 */
 import Ember from 'ember';
-import config from './config/environment';
 
-var Router = Ember.Router.extend({
-  location: config.locationType
+export default Ember.Route.extend({
 });
-
-Router.map(function() {
-  this.route('authentication');
-  this.resource('blogs', function(){
-      this.route('view', {path: '/:blogId'});
-      this.route('add');
-  });
-});
-
-Router.reopen({
-  rootURL: '/api/'
-});
-
-
-export default Router;

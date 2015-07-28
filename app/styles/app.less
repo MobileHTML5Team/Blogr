@@ -70,14 +70,14 @@ h1, h2, h3, a {
     padding-top: 15px;
 }
 
-@authenticationSpaceBetweenBlocks: 10px;
-@authenticationWidth: 200px;
-@authenticationHeight: 240px;
-.authentication-form {
+@formSpaceBetweenBlocks: 10px;
+@formWidth: 200px;
+@formHeight: 240px;
+.form {
     border-radius: 0 0 10px 0;
     .borderbox();
-    width: @authenticationWidth;
-    height: @authenticationHeight;
+    width: @formWidth;
+    height: @formHeight;
     border: 1px solid @blue;
     margin:auto;
     #login-title {
@@ -92,11 +92,11 @@ h1, h2, h3, a {
     label {
         width: 100%;
         display: block;
-        margin: @authenticationSpaceBetweenBlocks;
+        margin: @formSpaceBetweenBlocks;
         .borderbox();
     }
     input {
-        margin-left: @authenticationSpaceBetweenBlocks;
+        margin-left: @formSpaceBetweenBlocks;
         display: block;
         .borderbox();
     }
@@ -117,7 +117,7 @@ h1, h2, h3, a {
         text-decoration: none;
         border: none;
         margin-left: 75px;
-        margin-top: @authenticationSpaceBetweenBlocks;
+        margin-top: @formSpaceBetweenBlocks;
     }
 
     .btn:hover {
@@ -131,8 +131,8 @@ h1, h2, h3, a {
     }
     .form-error {
         color: @errorFont;
-        margin-left: @authenticationSpaceBetweenBlocks;
-        margin-top: @authenticationSpaceBetweenBlocks;
+        margin-left: @formSpaceBetweenBlocks;
+        margin-top: @formSpaceBetweenBlocks;
     }
 }
 

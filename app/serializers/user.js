@@ -1,0 +1,71 @@
+/**
+* Copyrigth (c) 2015 by PROS, Inc. All Rights Reserved.
+* This software is the confidential and propietary information of
+* PROS, Inc. ("Confidential Information").
+* You may not disclose such Confidential Information, and may only
+* use such Confidential Information in accordance with the terms of
+* the license agreement you entered into with PROS.
+*/
+import DS from 'ember-data';
+
+export default DS.RESTSerializer.extend({
+
+    /**
+    * All the attributes that will be serialized must be listed here.
+    *
+    * @property attrs
+    * @type {Object}
+    */
+    attrs: {
+        /**
+        * The user id.
+        *
+        * @property id
+        * @type {String}
+        * @default "user_id"
+        */
+        id: 'user_id',
+
+        /**
+        * The user username.
+        *
+        * @property username
+        * @type {String}
+        * @default "username"
+        */
+        username: 'username',
+
+        /**
+        * The user first name.
+        *
+        * @property firstName
+        * @type {String}
+        * @default "first_name"
+        */
+        firstName: 'first_name',
+
+        /**
+        * The user last name.
+        *
+        * @property lastName
+        * @type {String}
+        * @default "last_name"
+        */
+        lastName: 'last_name',
+    },
+
+    /**
+    *  Method that will normalize the payload, in order to be compatible with
+    * the emberjs format.
+    *
+    * @method normalizePayload
+    * @param payload the payload
+    * @return {Object} Returns the normalized payload.
+    */
+    normalizePayload: function(payload) {
+        payload = payload instanceof Array ? payload : [payload];
+        return {
+            'user' : payload
+        };
+    }
+});
