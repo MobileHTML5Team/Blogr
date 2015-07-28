@@ -1,6 +1,10 @@
 <div class="todo-list-container">
     <ul id="todo-list">
-        {{#link-to 'blogs.add' classNames="add-item-link"}} Add Blog {{/link-to}}
+        <div class="add-item-container">
+            {{#link-to 'blogs.add' classNames="add-item-link"}}
+                Create
+            {{/link-to}}
+        </div>
         {{#each blog in model}}
             {{blog-item blog=blog}}
         {{/each}}

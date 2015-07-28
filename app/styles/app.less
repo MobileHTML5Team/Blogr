@@ -13,15 +13,18 @@
     margin: 0;
     padding: 0;
 }
+
 .borderbox() {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
-html, body, body div {
+
+html, body, body div, .content {
     .size100();
     overflow: hidden;
 }
+
 h1, h2, h3, a {
     margin: 0;
     padding: 0;
@@ -140,10 +143,30 @@ h1, h2, h3, a {
     width: 300px;
     display: block;
     float: left;
+    max-height: 100%;
+    overflow-y: scroll;
 }
+
+.add-item-container {
+    background-color: lighten(@blue, 15%);
+    height: 20px;
+    width: 50px;
+    border-radius: 5px;
+    .add-item-link{
+        color: @white;
+        text-align: center;
+    }
+}
+
 
 .todo-item-container {
     width: 300px;
     display: block;
     float: left;
+    .item-title {
+        height: 30px;
+        text-align: center;
+        color: @white;
+        background-color: @blue;
+    }
 }

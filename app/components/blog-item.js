@@ -9,5 +9,5 @@ export default Ember.Component.extend({
         var owner = blog.get('owner') ? blog.get('owner').get('firstName') : 'undefined';
         var label = title + ' - ' + message + ' (' + owner + ')';
         return label;
-    }.property('currentPath')
+    }.property('blog.owner')
 });

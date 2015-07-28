@@ -18,10 +18,7 @@ export default Ember.ObjectController.extend({
                 title: title,
                 message: message
             });
-            blog.save().then(function(response){
-                blog.owner = response.owner;
-                blog.creationDate = response.creation_date;
-            });
+            blog.save();
         }
     }
 });

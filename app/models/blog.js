@@ -44,6 +44,5 @@ export default DS.Model.extend({
     * @type {Object}
     * @default "{}"
     */
-    //owner: DS.attr(),
-    owner: DS.belongsTo('user')
+    owner: DS.belongsTo('user', { async: false })
 });

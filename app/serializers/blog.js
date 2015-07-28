@@ -7,6 +7,7 @@
 * the license agreement you entered into with PROS.
 */
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
 
@@ -70,7 +71,7 @@ export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
     * @param payload the payload
     * @return {Object} Returns the normalized payload.
     */
-    normalizePayload: function(payload) {        
+    normalizePayload: function(payload) {
         payload = payload instanceof Array ? payload : [payload];
         return {
             'blog' : payload
@@ -78,19 +79,15 @@ export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
     },
 
     /**
-    *  Method that will serialize the payload, in order to be compatible with
-    * the rest api.
+    * Method that removes the model name from ember data JSON response.
     *
-    * @method serialize
-    * @param record the current record
+    * @method serializeIntoHash
+    * @param hash the hash
+    * @param type the type
+    * @param record the record
     * @param options the options
-    * @return {Object} Returns the serialized payload.
     */
-    serialize: function(snapshot) {
-        var payload = {
-            title: snapshot.attr('title'),
-            message: snapshot.attr('message')
-        };
-        return payload;
+    serializeIntoHash: function(hash, type, record, options) {
+        Ember.merge(hash, this.serialize(record, options));
     }
 });
