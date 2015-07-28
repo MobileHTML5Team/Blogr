@@ -9,7 +9,21 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+
+    /**
+    * Object that contains all the possible actions the control can perform.
+    *
+    * @property actions
+    * @type {Object}
+    */
     actions: {
+
+        /**
+        * Action method that will create a new blog, unless the blog does not have
+        * a valid title or message.
+        *
+        * @method submitBlog
+        */
         submitBlog: function() {
             var title = this.get('title');
             var message = this.get('message');
@@ -35,11 +49,22 @@ export default Ember.ObjectController.extend({
             });
         },
 
+        /**
+        * Action method that cancel the addition of a blog.
+        *
+        * @method cancel
+        */
         cancel: function() {
             this.transitionToRoute('blogs');
             this.send('resetFields');
         },
 
+        /**
+        * Action method that reset the fields of the form.
+        * It sets all the fields to ''
+        *
+        * @method resetFields
+        */
         resetFields: function() {
             this.set('title', '');
             this.set('message', '');
