@@ -20,6 +20,22 @@ export default Ember.ObjectController.extend({
     isEditionModeOn: false,
 
     /**
+    * Property flag that checks if the user is the owner of the blog.
+    *
+    * @property isOwner
+    * @type {Boolean}
+    */
+    isOwner: function() {
+        var owner = this.get('model').get('owner');
+        if(owner) {
+            var sessionId = localStorage.getItem('user_id');
+            var ownerId = owner.get('id');
+            return  ownerId === sessionId;
+        }
+        return false;
+    }.property('currentPath'),
+
+    /**
     * Object that contains all the actions of the controller.
     *
     * @property actions
@@ -83,8 +99,9 @@ export default Ember.ObjectController.extend({
         delete: function() {
             var blog = this.get('model');
             blog.deleteRecord();
+            blog.save();
             this.set('needsDeleteConfirmation', false);
-            this.transitionToRoute('blogs');            
+            this.transitionToRoute('blogs');
         },
 
         /**

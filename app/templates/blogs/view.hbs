@@ -1,7 +1,9 @@
 <div class="item-title">
     {{model.title}}
-    <button type="button" class="btn-delete" {{action 'confirmDeletion'}}></button>
-    <button type="button" class="btn-edit" {{action 'edit'}}></button>
+    {{#if isOwner}}
+        <button type="button" class="btn-delete" {{action 'confirmDeletion'}}></button>
+        <button type="button" class="btn-edit" {{action 'edit'}}></button>
+    {{/if}}
 </div>
 <div class="item-description">
     {{#unless isEditionModeOn}}
