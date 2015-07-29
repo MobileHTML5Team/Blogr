@@ -35,8 +35,6 @@ export default Ember.Route.extend({
     * @return {Array} Returns an array with all the blogs.
     */
     model: function(params) {
-        console.log('params');
-        console.log(params);
         if(params.page){
             var page = params.page;
             // avoid page numbers to be trolled i.e.: page=string, page=-1, page=1.23

@@ -1,7 +1,9 @@
 <div class="item-title">
     {{model.title}}
-    <button type="button" class="btn-delete" {{action 'confirmDeletion'}}></button>
-    <button type="button" class="btn-edit" {{action 'edit'}}></button>
+    {{#if isOwner}}
+        <button type="button" class="btn-delete" {{action 'confirmDeletion'}}></button>
+        <button type="button" class="btn-edit" {{action 'edit'}}></button>
+    {{/if}}
 </div>
 <div class="item-description">
     {{#unless isEditionModeOn}}
@@ -20,9 +22,7 @@
             </li>
         </ul>
     {{else}}
-        <form class="form" {{action "login" on="submit"}}>
-            <label>New Title</label>
-            {{input value=title type='text' placeholder='title'}}
+        <form class="form" {{action "submitEdition" on="submit"}}>
             <label>New Message</label>
             {{input value=message type="text" placeholder='message'}}
             <button type="button" class="btn" {{action 'submitEdition'}} >Submit</button>
@@ -33,10 +33,10 @@
         </form>
     {{/unless}}
     {{#if needsDeleteConfirmation}}
-        <form class="form" {{action "login" on="submit"}}>
+        <form class="form" {{action "delete" on="submit"}}>
             <label>Are you sure you want to delete this blog?</label>
             <button type="button" class="btn" {{action 'delete'}} >Delete</button>
-            <button type="button" class="btn-cancel" {{action 'cancelDeletion'}} >Cancel!</button>            
+            <button type="button" class="btn-cancel" {{action 'cancelDeletion'}} >Cancel!</button>
         </form>
     {{/if}}
 </div>

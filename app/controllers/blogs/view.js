@@ -20,6 +20,22 @@ export default Ember.ObjectController.extend({
     isEditionModeOn: false,
 
     /**
+    * Property flag that checks if the user is the owner of the blog.
+    *
+    * @property isOwner
+    * @type {Boolean}
+    */
+    isOwner: function() {
+        var owner = this.get('model').get('owner');
+        if(owner) {
+            var sessionId = localStorage.getItem('user_id');
+            var ownerId = owner.get('id');
+            return  ownerId === sessionId;
+        }
+        return false;
+    }.property('currentPath'),
+
+    /**
     * Object that contains all the actions of the controller.
     *
     * @property actions
@@ -51,20 +67,19 @@ export default Ember.ObjectController.extend({
         * @method submitEdition
         */
         submitEdition: function() {
-            var title = this.get('title');
             var message = this.get('message');
-            if(!title) {
-                this.set('editionFailed', true);
-                this.set('errorMessage', 'Insert a title please');
-                return;
-            }
             if(!message) {
                 this.set('editionFailed', true);
                 this.set('errorMessage', 'Insert a message please');
                 return;
             }
-            this.set('isEditionModeOn', false);
-            alert('not supported yet');
+            var id = this.get('id');
+            var that = this;
+            this.store.find('blog', id).then(function(blog) {
+                blog.set('message', message);
+                blog.save();
+                that.set('isEditionModeOn', false);
+            });
         },
 
         /**
@@ -82,8 +97,11 @@ export default Ember.ObjectController.extend({
         * @method delete
         */
         delete: function() {
+            var blog = this.get('model');
+            blog.deleteRecord();
+            blog.save();
             this.set('needsDeleteConfirmation', false);
-            alert('not supported yet');
+            this.transitionToRoute('blogs');
         },
 
         /**
