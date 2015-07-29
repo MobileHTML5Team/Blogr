@@ -16,7 +16,7 @@ export default DS.RESTAdapter.extend({
     * @type {String}
     * @default "api"
     */
-    namespace: '/api',
+    namespace: 'api',
 
     /**
     * The query headers.
@@ -42,15 +42,9 @@ export default DS.RESTAdapter.extend({
     *
     * @property pathForType
     * @type {String}
-    * @default "blog"
+    * @default "user"
     */
-    buildURL: function(modelName, id, snapshot) {        
-        if(id) {
-            return this.get('host') + this.get('namespace') + '/blog/' + id;
-        }
-        if(snapshot) {
-            return this.get('host') + this.get('namespace') + '/user/' + localStorage.getItem('user_id') + '/blog';
-        }
-        return this.get('host') + this.get('namespace') + '/blog';
+    pathForType: function() {
+        return 'user';
     }
 });

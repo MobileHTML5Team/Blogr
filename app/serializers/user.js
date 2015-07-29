@@ -7,9 +7,8 @@
 * the license agreement you entered into with PROS.
 */
 import DS from 'ember-data';
-import Ember from 'ember';
 
-export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default DS.RESTSerializer.extend({
 
     /**
     * All the attributes that will be serialized must be listed here.
@@ -19,48 +18,40 @@ export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
     */
     attrs: {
         /**
-        * The id of the blog.
+        * The user id.
         *
         * @property id
         * @type {String}
-        * @default "blog_id"
+        * @default "user_id"
         */
-        id: 'blog_id',
+        id: 'user_id',
 
         /**
-        * The title of the blog.
+        * The user username.
         *
-        * @property title
+        * @property username
         * @type {String}
-        * @default "title"
+        * @default "username"
         */
-        title: 'title',
+        username: 'username',
 
         /**
-        * The message of the blog.
+        * The user first name.
         *
-        * @property message
+        * @property firstName
         * @type {String}
-        * @default "title"
+        * @default "first_name"
         */
-        message: 'message',
+        firstName: 'first_name',
 
         /**
-        * The creation date of the blog.
+        * The user last name.
         *
-        * @property creationDate
+        * @property lastName
         * @type {String}
-        * @default "creation_date"
+        * @default "last_name"
         */
-        creationDate: 'creation_date',
-
-        /**
-        * The owner of the blog.
-        *
-        * @property owner
-        * @type {Object}
-        */
-        owner: {embedded: 'always'}
+        lastName: 'last_name',
     },
 
     /**
@@ -74,20 +65,7 @@ export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
     normalizePayload: function(payload) {
         payload = payload instanceof Array ? payload : [payload];
         return {
-            'blog' : payload
+            'user' : payload
         };
-    },
-
-    /**
-    * Method that removes the model name from ember data JSON response.
-    *
-    * @method serializeIntoHash
-    * @param hash the hash
-    * @param type the type
-    * @param record the record
-    * @param options the options
-    */
-    serializeIntoHash: function(hash, type, record, options) {
-        Ember.merge(hash, this.serialize(record, options));
     }
 });

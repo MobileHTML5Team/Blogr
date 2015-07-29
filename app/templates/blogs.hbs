@@ -1,6 +1,20 @@
-<ul id="todo-list">
-    {{#each blog in model}}
-        {{blog-item blog=blog}}
-    {{/each}}
-</ul>
-{{outlet}}
+<div class="blog-list-container">
+    <ul id="blog-list">
+        <div class="add-item-container">
+            {{#link-to 'blogs.add' classNames="add-item-link"}}
+                Create
+            {{/link-to}}
+        </div>
+        {{#each blog in model}}
+            {{blog-item blog=blog}}
+        {{/each}}
+    </ul>
+    <div class="blog-list-buttons">
+        <button type="button" class="previous-page" {{action 'previousPage'}}> &lt; </button>
+        {{page}}
+        <button type="button" class="next-page" {{action 'nextPage'}}> &gt; </button>
+    </div>
+</div>
+<div class="blog-item-container">
+    {{outlet}}
+</div>

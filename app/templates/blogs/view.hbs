@@ -1,1 +1,42 @@
-view!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<div class="item-title">
+    {{model.title}}
+    <button type="button" class="btn-delete" {{action 'confirmDeletion'}}></button>
+    <button type="button" class="btn-edit" {{action 'edit'}}></button>
+</div>
+<div class="item-description">
+    {{#unless isEditionModeOn}}
+        <ul>
+            <li>
+                <label class="item-label">Id:</label> {{model.id}}
+            </li>
+            <li>
+                <label class="item-label">Owner:</label> {{model.owner.username}}
+            </li>
+            <li>
+                <label class="item-label">Message:</label> {{model.message}}
+            </li>
+            <li>
+                <label class="item-label">Creation Date:</label> {{model.creationDate}}
+            </li>
+        </ul>
+    {{else}}
+        <form class="form" {{action "login" on="submit"}}>
+            <label>New Title</label>
+            {{input value=title type='text' placeholder='title'}}
+            <label>New Message</label>
+            {{input value=message type="text" placeholder='message'}}
+            <button type="button" class="btn" {{action 'submitEdition'}} >Submit</button>
+            <button type="button" class="btn-cancel" {{action 'cancelEdition'}} >Cancel!</button>
+            {{#if editionFailed}}
+                <div class="form-error">{{errorMessage}}</div>
+            {{/if}}
+        </form>
+    {{/unless}}
+    {{#if needsDeleteConfirmation}}
+        <form class="form" {{action "login" on="submit"}}>
+            <label>Are you sure you want to delete this blog?</label>
+            <button type="button" class="btn" {{action 'delete'}} >Delete</button>
+            <button type="button" class="btn-cancel" {{action 'cancelDeletion'}} >Cancel!</button>            
+        </form>
+    {{/if}}
+</div>

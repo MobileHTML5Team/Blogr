@@ -11,38 +11,29 @@ import DS from 'ember-data';
 export default DS.Model.extend({
 
     /**
-    * The title of the blog.
+    * The user username.
     *
     * @property title
     * @type {String}
     * @default ""
     */
-    title: DS.attr('string'),
+    username: DS.attr('string'),
 
     /**
-    * The title of the blog.
+    * The user first name.
     *
     * @property title
     * @type {String}
     * @default ""
     */
-    message: DS.attr('string'),
+    firstName: DS.attr('string'),
 
     /**
-    * The blog creation date.
+    * The user last name.
     *
-    * @property creationDate
-    * @type {Date}
+    * @property title
+    * @type {String}
     * @default ""
     */
-    creationDate: DS.attr('date'),
-
-    /**
-    * The blog owner.
-    *
-    * @property owner
-    * @type {Object}
-    * @default "{}"
-    */
-    owner: DS.belongsTo('user', { async: false })
+    lastName: DS.attr('string')
 });

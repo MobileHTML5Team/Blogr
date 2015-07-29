@@ -1,0 +1,14 @@
+<form class="form" {{action "submitBlog" on="submit"}}>
+    <div id="login-title">
+        <h3>New Blog</h3>
+    </div>
+    <label>Title</label>
+    {{input value=title type='text' placeholder='title'}}
+    <label>Message</label>
+    {{input value=message type="text" placeholder='message'}}
+    <button type="submit" class="btn">Create!</button>
+    <button type="button" {{action 'cancel'}} class="btn-cancel"> Cancel! </button>
+    {{#if creationFailed}}
+        <div class="form-error">{{errorMessage}}</div>
+    {{/if}}
+</form>
