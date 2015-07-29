@@ -1,0 +1,29 @@
+<div class="blogs">
+    <div class="list">
+        <div class="title">
+            <h2>{{name}}</h2>
+        </div>
+        <ul>
+            <li class="special">
+                {{#link-to 'blogs.create'}} Create New Blog {{/link-to}}
+            </li>
+            {{#each blog in controller}}
+                <li>
+                    <a {{action 'changeBlog' blog.id}}>
+                        {{blog.title}}
+                        <i>"{{blog.shortMessage}}"</i>
+                        <small>by {{blog.owner.firstName}}</small>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+        <div>
+            <button type="button" {{action 'previous'}}>previous</button>
+            {{pageId}}
+            <button type="button" {{action 'next'}}>next</button>
+        </div>
+    </div>
+    <div class="detail">
+        {{outlet}}
+    </div>
+</div>

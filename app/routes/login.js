@@ -8,6 +8,11 @@ import Ember from 'ember';
  */
 export default Ember.Route.extend({
     actions: {
+        /**
+         * Verify if credential are valid otherwire redirect to home page.
+         *
+         * @param credential {Object} users credential
+         */
         login: function(credential) {
             var self = this;
             var url = 'http://blogr-api.herokuapp.com/login';

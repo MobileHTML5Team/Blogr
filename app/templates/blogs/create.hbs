@@ -1,0 +1,27 @@
+<div class="blog-container">
+    {{name}}
+    {{outlet}}
+    <div>
+        <form {{action "createPost" blog on="submit"}}>
+            <div class="error">
+                {{#if errorMessage}}
+                  {{errorMessage}}
+                {{/if}}
+            </div>
+            <div>
+                <label>
+                    Title
+                </label>
+                {{input value=blog.title type="text"}}
+            </div>
+            <div>
+                <label>
+                    Message
+                </label>
+                {{textarea value=blog.message type="text"}}
+            </div>
+            <button type="submit">Create a new blog</button>
+            <button type="button" {{action 'cancel'}}>cancel</button>
+        </form>
+    </div>
+</div>

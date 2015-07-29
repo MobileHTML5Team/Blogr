@@ -12,5 +12,14 @@ export default DS.RESTAdapter.extend({
     host: 'http://blogr-api.herokuapp.com',
     headers: {
         'session_id': localStorage.getItem('session_id')
+    },
+
+    /**
+     * Gets User Id.
+     *
+     * @return {String} unique user ID
+     */
+    getUserId: function () {
+        return localStorage.getItem('user_id');
     }
 });

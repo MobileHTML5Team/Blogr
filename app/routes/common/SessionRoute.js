@@ -1,14 +1,15 @@
 import Ember from 'ember';
 
 /**
- * Handles user routes.
+ * Helper clas to validate User Session.
  *
- * @class UserRoute
+ * @class SessionCommonRoute
  * @constructor
  */
 export default Ember.Route.extend({
     /**
-     * Validarte if user session exist otherwise redirect to home page.
+     * Validate if there is a session.
+     *
      * @param transition {Object} current page transition
      */
     beforeModel: function(transition) {
@@ -17,13 +18,5 @@ export default Ember.Route.extend({
             controller.set('transition', transition);
             this.transitionTo('login');
         }
-    },
-
-    /**
-     * Load user information.
-     */
-    model: function() {
-        var userId = localStorage.getItem('user_id');
-        return this.store.find('user', userId);
     }
 });

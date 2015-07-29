@@ -1,3 +1,5 @@
+@blogs-color: rgb(81, 124, 121);
+
 * {
     margin: 0;
     padding: 0;
@@ -5,24 +7,24 @@
 
 // global stype
 .container {
-    width: 1170px;
     margin: 0px auto;
+    width: 1170px;
 }
 
 .error {
     color: red;
-    font-weight: bold;
     padding: 5px;
+    font-weight: bold;
 }
 
 .header {
     .container {
-        background: #000;
-        height: 30px;
-        width: 98%;
-        position: fixed;
         top: 0px;
+        width: 98%;
+        height: 30px;
+        position: fixed;
         padding: 5px 1%;
+        background: @blogs-color;
     }
     div, a {
         color: white;
@@ -34,18 +36,77 @@
         float: left;
     }
     .text-left {
-        text-align: left;
         width: 60%;
+        text-align: left;
     }
     .text-right {
+        width: 40%;
         text-align: right;
-        width: 39%;
     }
 }
 
+/* body container */
 .body {
-    margin-top: 50px;
+    margin-top: 40px;
+    .blogs {
+        width: 100%;
+        float: left;
+        .list {
+            width: 20%;
+            float: left;
+            color: #777;
+            background-color: #FAFAFA;
+            .title {
+                padding: 10px;
+                font-weight: bold;
+                border-right: 2px solid @blogs-color;
+            }
+            ul {
+                padding-top: 5px;
+                border-right: 2px solid @blogs-color;
+                .special a {
+                    color: white;
+                    background: @blogs-color;
+                }
+                li {
+                    display: block;
+                    a {
+                        color: #777;
+                        display: block;
+                        font-size: 1.2em;
+                        padding: 7px 10px;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        color: white;
+                        background: @blogs-color;
+                    }
+                }
+            }
+        }
+        .detail {
+            width: 80%;
+            float: left;
+        }
+    }
+}
+
+/* component blog's container */
+.blog-container {
+    padding: 10px;
+    .message {
+        padding: 10px;
+    }
+    .title {
+        h1 {
+            display: inline;
+            a {
+                color: @blogs-color;
+            }
+        }
+    }
 }
 
 .footer {
+    text-align: center;
 }
